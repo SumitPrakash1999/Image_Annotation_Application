@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Annotations</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mt-5 mb-5">Image Annotations</h1>
+            </div>
+        </div>
+
+        <div id="step1" class="row">
+            <div class="col-md-12">
+                <form id="uploadForm" class="dropzone-form" enctype="multipart/form-data">
+                    <div id="dropzone" class="dropzone">
+                        <span>Drag & Drop images here or click to upload</span>
+                        <input type="file" id="fileInput" name="image" multiple required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Upload Images</button>
+                    <div class="progress mt-2" style="display: none;">
+                        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="step2" class="row" style="display: none;">
+            <div class="col-md-12">
+                <form id="annotationForm">
+                    <div class="form-group">
+                        <label for="annotations">Select Annotations</label>
+                        <select id="annotations" class="form-control annotation" name="annotations" multiple required style="width: 100%;">
+                            <option value="airplane">Airplane</option>
+                            <option value="automobile">Automobile</option>
+                            <option value="bird">Bird</option>
+                            <option value="cat">Cat</option>
+                            <option value="deer">Deer</option>
+                            <option value="dog">Dog</button>
+                            <option value="frog">Frog</option>
+                            <option value="horse">Horse</option>
+                            <option value="ship">Ship</option>
+                            <option value="truck">Truck</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save Annotations</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="success-message" class="col-md-12 alert alert-success mt-4" style="display:none;">
+                Success! Images and annotations inserted.
+            </div>
+        </div>
+
+        <div id="uploaded-images" class="row mt-4" style="display: none;">
+            <div id="uploaded-images-container" class="row"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'app/js/scripts.js' %}"></script>
+</body>
+</html>
