@@ -122,7 +122,19 @@ function displayUploadedImages(images) {
     const container = $("#uploaded-images-container").empty();
     const imageIds = images.map(image => image.id);
 
-    const columnClass = images.length === 1 ? 'col-md-6 offset-md-3' : 'col-md-4';
+    // const columnClass = images.length === 1 ? 'col-md-8 offset-md-2' : 'col-md-6';
+
+    let columnClass;
+
+    // Determine the appropriate Bootstrap grid class based on the number of images
+    if (images.length === 1) {
+        columnClass = 'col-md-8 offset-md-2'; // Larger single image, centered
+    } else if (images.length === 2) {
+        columnClass = 'col-md-6'; // Two images per row
+    } else {
+        columnClass = 'col-md-4'; // Three images per row, the standard layout for more than 2
+    }
+
 
     for (const image of images) {
         const imageItem = $(`

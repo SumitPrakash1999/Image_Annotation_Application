@@ -1,11 +1,13 @@
 import os
 from pathlib import Path
+from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-38x$y6w2e4e@9s+)%qk!%22+_8&u5b7bk20zzfnk^_8_vb$e9m'
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -54,10 +56,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'image_annotation_db',
+        'NAME': config('DB_NAME'),
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://sumitprakash98:0Nb6zwr5ZkVIcYxC@cluster0.jmwjkwl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+            'host': config('DB_HOST')
         }
     }
 }
